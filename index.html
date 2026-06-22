@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<meta name="description" content="Reparatii acoperisuri Drumul Carului, Bucuresti. Constructie acoperis nou, tigla metalica, dulgherie, jgheaburi. Peste 20 ani experienta. Raspuns rapid pe WhatsApp.">
+<meta property="og:title" content="Reparatii acoperisuri Drumul Carului | Bucuresti">
+<meta property="og:description" content="Acoperisuri durabile, montate ca la carte. Cotatie transparenta, executie la termen.">
+<title>Reparatii acoperisuri Drumul Carului | Bucuresti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1115;
+    --bg-2:#15181f;
+    --surface:#1c2029;
+    --line:#262b36;
+    --ink:#f4ede0;
+    --ink-mute:#a8a6a0;
+    --accent:#ff6a1f;     /* burnt sunset / clay tile fire */
+    --accent-2:#ffb347;   /* warm amber highlight */
+    --copper:#b87333;
+    --ok:#7ec986;
+    --shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px; /* room for mobile sticky bar */
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;
+    background:rgba(15,17,21,.65);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.04);
+    transition:background .3s;
+  }
+  .nav.scrolled{background:rgba(15,17,21,.92)}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Anton',sans-serif;letter-spacing:.04em;font-size:18px;text-transform:uppercase}
+  .brand-mark{
+    width:32px;height:32px;display:grid;place-items:center;
+    background:var(--accent);border-radius:6px;color:#0f1115;
+  }
+  .brand-mark svg{width:18px;height:18px}
+  .nav-actions{display:flex;gap:8px}
+  .nav-btn{
+    font-size:13px;font-weight:600;padding:9px 14px;border-radius:8px;
+    border:1px solid var(--line);transition:all .2s;
+  }
+  .nav-btn.primary{background:var(--accent);color:#0f1115;border-color:var(--accent)}
+  .nav-btn.primary:hover{background:var(--accent-2)}
+  .nav-btn:hover{border-color:var(--accent)}
+  @media (max-width:520px){.nav-btn.ghost{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;padding:120px 22px 80px;
+    display:flex;flex-direction:column;justify-content:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 75% 30%, rgba(255,106,31,.18), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184,115,51,.10), transparent 60%),
+      linear-gradient(180deg,#0f1115 0%,#15181f 100%);
+  }
+  .hero::before{
+    /* subtle roof-pitch pattern */
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,.018) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,.018) 25%, transparent 25%);
+    background-size:32px 32px;
+    opacity:.6;pointer-events:none;
+  }
+  .hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:2}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;
+    color:var(--accent-2);text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;
+    opacity:0;transform:translateY(20px);
+    animation:rise .8s .1s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  h1.hero-title{
+    font-family:'Anton',sans-serif;font-weight:400;
+    font-size:clamp(44px, 9vw, 104px);
+    line-height:.92;letter-spacing:-.01em;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  h1.hero-title span{display:block;opacity:0;transform:translateY(40px);animation:rise .9s forwards cubic-bezier(.2,.7,.2,1)}
+  h1.hero-title span:nth-child(1){animation-delay:.15s}
+  h1.hero-title span:nth-child(2){animation-delay:.28s;color:var(--accent)}
+  h1.hero-title span:nth-child(3){animation-delay:.41s}
+  .hero-sub{
+    max-width:580px;font-size:clamp(16px,2.2vw,19px);color:var(--ink-mute);
+    margin:8px 0 36px;
+    opacity:0;transform:translateY(20px);animation:rise .9s .55s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .hero-ctas{
+    display:flex;flex-wrap:wrap;gap:12px;margin-bottom:42px;
+    opacity:0;transform:translateY(20px);animation:rise .9s .7s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 24px;border-radius:10px;font-weight:600;font-size:15px;
+    transition:all .25s;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--accent);color:#0f1115}
+  .btn-primary:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(255,106,31,.5)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-2)}
+  .btn svg{width:18px;height:18px}
+
+  .hero-badges{
+    display:flex;flex-wrap:wrap;gap:18px 24px;
+    opacity:0;transform:translateY(20px);animation:rise .9s .85s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .badge{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-mute);font-weight:500}
+  .badge svg{width:16px;height:16px;color:var(--accent)}
+
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:50px 22px;
+  }
+  .stats-grid{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .stat{text-align:center;position:relative}
+  .stat:not(:last-child)::after{
+    content:"";position:absolute;right:-11px;top:20%;bottom:20%;width:1px;background:var(--line);
+  }
+  .stat-num{
+    font-family:'Anton',sans-serif;font-size:clamp(40px,7vw,72px);line-height:1;
+    color:var(--accent);letter-spacing:-.01em;
+  }
+  .stat-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-mute);margin-top:8px;
+  }
+  @media (max-width:600px){
+    .stats-grid{grid-template-columns:1fr;gap:30px}
+    .stat:not(:last-child)::after{display:none}
+  }
+
+  /* ---------- TRIANGULAR DIVIDERS (semnătura: pante de acoperis) ---------- */
+  .divider{display:block;width:100%;height:80px;color:var(--bg)}
+  .divider svg{display:block;width:100%;height:100%}
+  .divider-up{color:var(--bg)}
+  .divider-down{color:var(--bg-2)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:90px 22px;position:relative}
+  .container{max-width:1180px;margin:0 auto}
+  .section-head{margin-bottom:50px;max-width:720px}
+  .section-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;
+    color:var(--accent-2);text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .section-eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+  h2.section-title{
+    font-family:'Anton',sans-serif;font-weight:400;
+    font-size:clamp(34px,5.5vw,58px);line-height:1;
+    text-transform:uppercase;letter-spacing:-.005em;
+  }
+  .section-lead{margin-top:14px;color:var(--ink-mute);font-size:17px;max-width:560px}
+
+  /* ---------- SERVICES ---------- */
+  .services-wrap{background:var(--bg-2)}
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .svc{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:32px 26px;position:relative;overflow:hidden;
+    transition:transform .35s, border-color .35s;
+  }
+  .svc::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--accent),transparent);
+    transform:scaleX(0);transform-origin:left;transition:transform .4s;
+  }
+  .svc:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .svc:hover::before{transform:scaleX(1)}
+  .svc-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);
+    letter-spacing:.15em;margin-bottom:18px;display:block;
+  }
+  .svc-icon{
+    width:48px;height:48px;display:grid;place-items:center;
+    background:rgba(255,106,31,.1);border:1px solid rgba(255,106,31,.2);
+    border-radius:10px;margin-bottom:22px;
+  }
+  .svc-icon svg{width:24px;height:24px;color:var(--accent-2)}
+  .svc h3{
+    font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;
+    letter-spacing:.02em;margin-bottom:10px;font-weight:400;
+  }
+  .svc p{color:var(--ink-mute);font-size:15px}
+  @media (max-width:880px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.services-grid{grid-template-columns:1fr}}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .gal-card{
+    position:relative;overflow:hidden;border-radius:14px;
+    background:var(--surface);border:1px solid var(--line);
+    transition:transform .4s, border-color .4s;
+    display:flex;flex-direction:column;
+  }
+  .gal-card:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .gal-media{
+    position:relative;aspect-ratio:4/3;overflow:hidden;background:#0a0c10;
+  }
+  .gal-media img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1), filter .4s;
+    filter:saturate(.92);
+  }
+  .gal-card:hover .gal-media img{transform:scale(1.06);filter:saturate(1.1)}
+  .gal-tag{
+    position:absolute;top:14px;left:14px;z-index:2;
+    background:rgba(15,17,21,.85);backdrop-filter:blur(8px);
+    padding:6px 10px;border-radius:6px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);
+    border:1px solid rgba(255,179,71,.25);
+  }
+  .gal-body{
+    padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;
+    border-top:1px solid var(--line);
+  }
+  .gal-title{
+    font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;
+    letter-spacing:.02em;font-weight:400;line-height:1.1;
+  }
+  .gal-meta{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);
+    display:flex;align-items:center;gap:8px;
+  }
+  .gal-meta::before{content:"";width:18px;height:1px;background:var(--accent)}
+  @media (max-width:880px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.gallery-grid{grid-template-columns:1fr}}
+
+  /* ---------- PROCESS ---------- */
+  .process-wrap{background:var(--bg-2)}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+  .step{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:36px 28px;position:relative;
+  }
+  .step-num{
+    font-family:'Anton',sans-serif;font-size:64px;line-height:1;
+    color:transparent;-webkit-text-stroke:1.5px var(--accent);
+    margin-bottom:18px;display:block;
+  }
+  .step h3{
+    font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;
+    letter-spacing:.02em;margin-bottom:10px;font-weight:400;
+  }
+  .step p{color:var(--ink-mute);font-size:15px}
+  @media (max-width:780px){.process-grid{grid-template-columns:1fr}}
+
+  /* ---------- WHY US ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .why{
+    padding:28px 22px;border-radius:12px;
+    background:var(--surface);border:1px solid var(--line);
+    transition:all .3s;
+  }
+  .why:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .why-icon{
+    width:42px;height:42px;display:grid;place-items:center;
+    background:rgba(255,106,31,.12);border-radius:8px;margin-bottom:18px;
+    color:var(--accent);
+  }
+  .why-icon svg{width:22px;height:22px}
+  .why h3{font-family:'Anton',sans-serif;font-size:19px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px;font-weight:400}
+  .why p{color:var(--ink-mute);font-size:14px;line-height:1.5}
+  @media (max-width:880px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.why-grid{grid-template-columns:1fr}}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-wrap{background:var(--bg-2)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:30px 26px;position:relative;
+    display:flex;flex-direction:column;gap:18px;
+  }
+  .review::before{
+    content:"\201C";position:absolute;top:8px;right:22px;
+    font-family:'Anton',sans-serif;font-size:80px;color:var(--accent);opacity:.18;line-height:1;
+  }
+  .stars{display:flex;gap:3px;color:var(--accent-2)}
+  .stars svg{width:18px;height:18px;fill:currentColor}
+  .review-text{font-size:15.5px;line-height:1.6;color:var(--ink)}
+  .review-author{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .avatar{
+    width:42px;height:42px;border-radius:50%;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--copper));
+    color:#0f1115;font-weight:700;font-size:16px;
+  }
+  .author-name{font-weight:600;font-size:14px}
+  .author-meta{font-size:12px;color:var(--ink-mute);display:flex;align-items:center;gap:6px}
+  .verified{color:var(--ok);display:inline-flex;align-items:center;gap:4px;font-size:11px}
+  .verified svg{width:12px;height:12px}
+  @media (max-width:880px){.reviews-grid{grid-template-columns:1fr}}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    text-align:center;padding:110px 22px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,106,31,.18), transparent 70%),
+      var(--bg);
+    position:relative;overflow:hidden;
+  }
+  .cta::before, .cta::after{
+    content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,106,31,.15), transparent 70%);
+    filter:blur(40px);
+  }
+  .cta::before{top:-100px;left:-100px}
+  .cta::after{bottom:-100px;right:-100px}
+  .cta h2{margin-bottom:18px}
+  .cta-sub{color:var(--ink-mute);max-width:520px;margin:0 auto 36px;font-size:17px}
+  .cta-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#0a0c10;padding:50px 22px 30px;border-top:1px solid var(--line);
+    text-align:center;
+  }
+  .foot-brand{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
+  .foot-meta{color:var(--ink-mute);font-size:14px;margin-bottom:6px}
+  .foot-meta a{color:var(--accent-2)}
+  .foot-copy{font-size:12px;color:#666;margin-top:18px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em}
+
+  /* ---------- STICKY MOBILE BAR ---------- */
+  .sticky-bar{
+    position:fixed;bottom:0;left:0;right:0;z-index:40;
+    display:none;grid-template-columns:1fr 1fr;gap:0;
+    background:rgba(15,17,21,.95);
+    backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);
+  }
+  .sticky-bar a{
+    padding:18px 12px;text-align:center;font-weight:600;font-size:14px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .sticky-bar a svg{width:18px;height:18px}
+  .sticky-bar .call{color:var(--ink);border-right:1px solid var(--line)}
+  .sticky-bar .wa{background:var(--accent);color:#0f1115}
+  @media (max-width:780px){.sticky-bar{display:grid}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s, transform .8s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-delay-1{transition-delay:.1s}
+  .reveal-delay-2{transition-delay:.2s}
+  .reveal-delay-3{transition-delay:.3s}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001s !important;transition-duration:.001s !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="brand">
+    <span class="brand-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h14V10"/></svg>
+    </span>
+    <span>Acoperisuri DC</span>
+  </a>
+  <div class="nav-actions">
+    <a href="https://wa.me/40793704252" class="nav-btn primary">WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Bucuresti · Drumul Carului · Sector 6</div>
+    <h1 class="hero-title">
+      <span>Acoperisuri</span>
+      <span>montate</span>
+      <span>ca la carte.</span>
+    </h1>
+    <p class="hero-sub">Reparatii, constructie noua, dulgherie si sisteme pluviale. Peste 20 de ani de experienta, cotatie transparenta inainte de start, executie la termenul stabilit.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/40793704252" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1s-.7.9-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.2-.2-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.4 1.1 1.1-3.3-.2-.3C3.5 14.7 3 13.4 3 12 3 7 7 3 12 3s9 4 9 9-4 8-9 8z"/></svg>
+        Scrie pe WhatsApp
+      </a>
+      <a href="tel:+40793704252" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Suna acum
+      </a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Raspuns in 24h</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Fara taxe ascunse</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Furnizor verificat</span>
+    </div>
+  </div>
+</header>
+
+<!-- TRIANGULAR DIVIDER (pante de acoperis) -->
+<div class="divider divider-down">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,80 120,40 240,80 360,40 480,80 600,40 720,80 840,40 960,80 1080,40 1200,80 1320,40 1440,80 1440,0 0,0"/>
+  </svg>
+</div>
+
+<!-- STATS -->
+<section class="stats" style="padding:50px 22px">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-num" data-target="20">0</div>
+      <div class="stat-label">Ani de experienta</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-target="50" data-suffix="+">0</div>
+      <div class="stat-label">Proiecte finalizate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-target="100" data-suffix="%">0</div>
+      <div class="stat-label">Satisfactie clienti</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIANGULAR DIVIDER UP -->
+<div class="divider" style="color:#1c2029;background:var(--bg-2)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,0 120,40 240,0 360,40 480,0 600,40 720,0 840,40 960,0 1080,40 1200,0 1320,40 1440,0 1440,80 0,80"/>
+  </svg>
+</div>
+
+<!-- SERVICES -->
+<section class="services-wrap" id="servicii">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Oferta</div>
+      <h2 class="section-title">Servicii<br>complete</h2>
+      <p class="section-lead">De la sarpanta pana la ultimul jgheab — tot ce tine de acoperis, sub un singur acoperis.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 3l9 9"/><path d="M5 10v11h14V10"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Constructie acoperis nou</h3>
+        <p>Proiectare, sarpanta din lemn, tigla metalica sau ceramica. Solutie completa de la zero.</p>
+      </div>
+      <div class="svc reveal reveal-delay-1">
+        <span class="svc-num">02</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Reparatii acoperisuri</h3>
+        <p>Interventii rapide la infiltratii, tigle sparte, suruburi desfacute. Diagnoza pe loc.</p>
+      </div>
+      <div class="svc reveal reveal-delay-2">
+        <span class="svc-num">03</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l1.5-4 4-1.5L18 6l3 3-10.5 10.5L6 21z"/><path d="M14 4l6 6"/></svg></div>
+        <h3>Dulgherie & sarpante</h3>
+        <p>Sarpante noi, reparatii la capriori, talpi si pane. Lemn tratat, imbinari ca la carte.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-num">04</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v6a4 4 0 008 0V2"/><path d="M12 8v14"/><path d="M9 22h6"/></svg></div>
+        <h3>Jgheaburi si burlane</h3>
+        <p>Montaj si inlocuire sisteme pluviale. Aluminiu, tabla zincata sau cupru, la alegere.</p>
+      </div>
+      <div class="svc reveal reveal-delay-1">
+        <span class="svc-num">05</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Curatare si vopsire</h3>
+        <p>Igienizare, decapare si vopsire acoperis tabla. Aspect ca nou, durabilitate extinsa.</p>
+      </div>
+      <div class="svc reveal reveal-delay-2">
+        <span class="svc-num">06</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/><path d="M14 12l3-3"/></svg></div>
+        <h3>Izolatii si parazapezi</h3>
+        <p>Vata minerala, folie anticondens, montaj sisteme parazapezi pentru siguranta iarna.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIANGULAR DIVIDER -->
+<div class="divider" style="color:#15181f;background:var(--bg)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,80 120,40 240,80 360,40 480,80 600,40 720,80 840,40 960,80 1080,40 1200,80 1320,40 1440,80 1440,0 0,0"/>
+  </svg>
+</div>
+
+<!-- GALLERY -->
+<section id="galerie">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Lucrari</div>
+      <h2 class="section-title">Galerie<br>din santier</h2>
+      <p class="section-lead">Cateva din proiectele finalizate — tigla metalica, sarpante noi si sisteme pluviale montate la cheie.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal-card reveal">
+        <div class="gal-media">
+          <span class="gal-tag">Tigla metalica</span>
+          <img src="https://images.unsplash.com/photo-1632759145355-3da93186b9da?w=900&q=80" alt="Acoperis tigla metalica" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Casa familiala P+M</div>
+          <div class="gal-meta">Bucuresti · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-1">
+        <div class="gal-media">
+          <span class="gal-tag">Sarpanta</span>
+          <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=900&q=80" alt="Sarpanta din lemn" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Sarpanta lemn stratificat</div>
+          <div class="gal-meta">Ilfov · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-2">
+        <div class="gal-media">
+          <span class="gal-tag">Sistem pluvial</span>
+          <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=900&q=80" alt="Jgheaburi si burlane" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Jgheaburi aluminiu</div>
+          <div class="gal-meta">Bucuresti · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-card reveal">
+        <div class="gal-media">
+          <span class="gal-tag">Acoperis nou</span>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Acoperis nou casa" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Constructie completa</div>
+          <div class="gal-meta">Sector 6 · 2024</div>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-1">
+        <div class="gal-media">
+          <span class="gal-tag">Reparatii</span>
+          <img src="https://images.unsplash.com/photo-1604769670750-f9efea4b2d52?w=900&q=80" alt="Reparatie acoperis" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Inlocuire tigla sparta</div>
+          <div class="gal-meta">Drumul Carului · 2024</div>
+        </div>
+      </div>
+
+      <div class="gal-card reveal reveal-delay-2">
+        <div class="gal-media">
+          <span class="gal-tag">Dulgherie</span>
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80" alt="Dulgherie acoperis" loading="lazy">
+        </div>
+        <div class="gal-body">
+          <div class="gal-title">Capriori si pane noi</div>
+          <div class="gal-meta">Sector 6 · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIANGULAR DIVIDER -->
+<div class="divider" style="color:#1c2029;background:var(--bg-2)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,0 120,40 240,0 360,40 480,0 600,40 720,0 840,40 960,0 1080,40 1200,0 1320,40 1440,0 1440,80 0,80"/>
+  </svg>
+</div>
+
+<!-- PROCESS -->
+<section class="process-wrap" id="proces">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Cum lucram</div>
+      <h2 class="section-title">Trei pasi.<br>Fara surprize.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal">
+        <span class="step-num">01</span>
+        <h3>Scrie sau suna</h3>
+        <p>Descrie ce ai nevoie sau trimite cateva poze pe WhatsApp. Iti raspundem rapid.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <span class="step-num">02</span>
+        <h3>Stabilim pretul si data</h3>
+        <p>Venim in teren daca e cazul, masuram, dam o cotatie clara si stabilim termenul.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <span class="step-num">03</span>
+        <h3>Executam lucrarea</h3>
+        <p>Lucram curat, la calitate, in termenul promis. Garantie pentru manopera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIANGULAR DIVIDER -->
+<div class="divider" style="color:#15181f;background:var(--bg)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,80 120,40 240,80 360,40 480,80 600,40 720,80 840,40 960,80 1080,40 1200,80 1320,40 1440,80 1440,0 0,0"/>
+  </svg>
+</div>
+
+<!-- WHY US -->
+<section id="de-ce-noi">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">De ce noi</div>
+      <h2 class="section-title">Patru motive<br>concrete</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Pret corect</h3>
+        <p>Cotatie transparenta inainte de inceperea lucrarii. Fara taxe ascunse.</p>
+      </div>
+      <div class="why reveal reveal-delay-1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Punctualitate</h3>
+        <p>Respectam termenele stabilite. Daca apare un blocaj, anuntam din prima.</p>
+      </div>
+      <div class="why reveal reveal-delay-2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3v7z"/></svg></div>
+        <h3>Calitate</h3>
+        <p>Metode verificate, materiale de calitate, garantie scrisa pentru manopera.</p>
+      </div>
+      <div class="why reveal reveal-delay-3">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+        <h3>Disponibilitate</h3>
+        <p>7 zile din 7 pe WhatsApp. Scrie oricand, raspundem cat mai rapid posibil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIANGULAR DIVIDER -->
+<div class="divider" style="color:#1c2029;background:var(--bg-2)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <polygon points="0,0 120,40 240,0 360,40 480,0 600,40 720,0 840,40 960,0 1080,40 1200,0 1320,40 1440,0 1440,80 0,80"/>
+  </svg>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-wrap" id="recenzii">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Recenzii</div>
+      <h2 class="section-title">Ce spun<br>clientii</h2>
+      <p class="section-lead">Feedback real de la oameni carora le-am montat sau reparat acoperisul.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Comunicare rapida, au ajuns exact la ora stabilita si lucrarea a fost facuta serios. Acoperisul arata impecabil, fara o singura infiltratie dupa ploile mari. Recomand cu incredere.</p>
+        <div class="review-author">
+          <div class="avatar">A</div>
+          <div>
+            <div class="author-name">Andrei M.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal reveal-delay-1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Comunicarea pe WhatsApp a fost rapida si totul s-a desfasurat exact cum am discutat. Au schimbat tigla sparta si au verificat tot acoperisul. Preturi corecte, fara surprize.</p>
+        <div class="review-author">
+          <div class="avatar">M</div>
+          <div>
+            <div class="author-name">Maria P.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal reveal-delay-2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Atitudine profesionala din primul contact. Au montat sarpanta noua si tigla metalica pe casa de la tara. Preturile au corespuns cu ceea ce am stabilit dinainte. Echipa serioasa.</p>
+        <div class="review-author">
+          <div class="avatar">C</div>
+          <div>
+            <div class="author-name">Cristian D.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Aveam o infiltratie de un an pe care nimeni nu reusise sa o rezolve. Ei au gasit cauza in 30 de minute si au reparat in aceeasi zi. Felicitari pentru profesionalism.</p>
+        <div class="review-author">
+          <div class="avatar">E</div>
+          <div>
+            <div class="author-name">Elena R.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal reveal-delay-1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Lucrare curata, au strans mizeria dupa ei la final si au explicat tot ce au facut. Jgheaburile noi arata excelent, pretul a fost corect raportat la calitate.</p>
+        <div class="review-author">
+          <div class="avatar">G</div>
+          <div>
+            <div class="author-name">George T.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal reveal-delay-2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="review-text">Am construit casa noua si ei au facut acoperisul. Sarpanta solida, tigla montata frumos, totul la termen. Recomand cu mare incredere oricui are nevoie de oameni seriosi.</p>
+        <div class="review-author">
+          <div class="avatar">V</div>
+          <div>
+            <div class="author-name">Vlad I.</div>
+            <div class="author-meta">Bucuresti · <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verificat</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container reveal">
+    <div class="section-eyebrow" style="justify-content:center">Contact</div>
+    <h2 class="section-title">Trimite o poza,<br>primesti un pret.</h2>
+    <p class="cta-sub">Cea mai rapida cale: o poza pe WhatsApp si o scurta descriere. In maximum 24h primesti raspuns cu o cotatie clara.</p>
+    <div class="cta-ctas">
+      <a href="https://wa.me/40793704252" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1s-.7.9-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.2-.2-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.4 1.1 1.1-3.3-.2-.3C3.5 14.7 3 13.4 3 12 3 7 7 3 12 3s9 4 9 9-4 8-9 8z"/></svg>
+        WhatsApp
+      </a>
+      <a href="tel:+40793704252" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +40 793 704 252
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">Acoperisuri Drumul Carului</div>
+  <div class="foot-meta">Bucuresti · Sector 6 · Drumul Carului</div>
+  <div class="foot-meta"><a href="tel:+40793704252">+40 793 704 252</a> · <a href="https://wa.me/40793704252">WhatsApp</a></div>
+  <div class="foot-copy">© 2026 · Toate drepturile rezervate</div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="sticky-bar">
+  <a href="tel:+40793704252" class="call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Suna
+  </a>
+  <a href="https://wa.me/40793704252" class="wa">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1s-.7.9-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.2-.2-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.4 1.1 1.1-3.3-.2-.3C3.5 14.7 3 13.4 3 12 3 7 7 3 12 3s9 4 9 9-4 8-9 8z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Animated counters
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+      countIo.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => countIo.observe(el));
+</script>
+
+</body>
+</html>
